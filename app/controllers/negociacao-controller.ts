@@ -16,6 +16,7 @@ export class NegociacaoController {
     //void significa que n retorna nada
     adiciona(): void{
         const negociacao = this.criarNegociacao()
+
         this.negociacoes.adicionar(negociacao);
         console.log(this.negociacoes.listar())
         this.limparFormulario()

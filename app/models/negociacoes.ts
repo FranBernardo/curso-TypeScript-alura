@@ -8,7 +8,8 @@ export class Negociacoes{
 
     }
 
-    listar(): Array<Negociacao>{
+    // ReadonlyArray= para funcoes somente leitura n permite alterar de forma alguma.
+    listar(): ReadonlyArray<Negociacao>{
         return this.negociacoes;
     }
 }
