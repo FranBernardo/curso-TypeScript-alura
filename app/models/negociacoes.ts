@@ -1,7 +1,8 @@
 import { Negociacao } from "./negociacao";
+//Array<Negociacao> é igual a escrever assim Negociacao[]
 
 export class Negociacoes{
-    private negociacoes: Array<Negociacao> = []
+    private negociacoes: Negociacao[] = []
 
     adicionar(negociacao: Negociacao){
         this.negociacoes.push(negociacao)
@@ -9,7 +10,8 @@ export class Negociacoes{
     }
 
     // ReadonlyArray= para funcoes somente leitura n permite alterar de forma alguma.
-    listar(): ReadonlyArray<Negociacao>{
+    // ReadonlyArray<Negociacao> é igual a escrever assim readonly
+    listar(): readonly Negociacao[]{
         return this.negociacoes;
     }
 }
