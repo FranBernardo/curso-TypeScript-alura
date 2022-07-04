@@ -1,6 +1,6 @@
 import { NegociacaoController } from "./controllers/negociacao-controller.js";
 import { Negociacoes } from "./models/negociacoes.js";
-import { NegociacaoView } from "./views/negociacao-view.js";
+import { NegociacoesView } from "./views/negociacoes-view.js";
 
 
 const controlle = new NegociacaoController()
@@ -10,6 +10,6 @@ form.addEventListener('submit', event => {
     controlle.adiciona()
 });
 
-const negociacaoView = new NegociacaoView('#negociacoesView')
+const negociacaoView = new NegociacoesView('#negociacoesView')
 // const templete = negociacaoView.templete();
 // console.log(templete)

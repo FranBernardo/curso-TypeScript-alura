@@ -1,14 +1,14 @@
 import { Negociacao } from "../models/negociacao.js"
 import { Negociacoes } from "../models/negociacoes.js"
 import { MensagemView } from "../views/mensagem-view.js"
-import { NegociacaoView } from "../views/negociacao-view.js"
+import { NegociacoesView } from "../views/negociacoes-view.js"
 
 export class NegociacaoController {
     private inputData: HTMLInputElement
     private inputQuantidade: HTMLInputElement
     private inputValor: HTMLInputElement
     private negociacoes = new Negociacoes();
-    private negociacoesView = new NegociacaoView('#negociacoesView')
+    private negociacoesView = new NegociacoesView('#negociacoesView')
     private mensagemView = new MensagemView('#mensagemView')
 
     constructor(){

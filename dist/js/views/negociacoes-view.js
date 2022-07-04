@@ -1,6 +1,6 @@
 import { View } from "./view.js";
-export class NegociacaoView extends View {
-    templete(model) {
+export class NegociacoesView extends View {
+    template(model) {
         return `
             <table class="table table-hover table-bordered">
                 <thead>
