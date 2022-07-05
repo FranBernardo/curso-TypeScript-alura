@@ -7,5 +7,3 @@ form.addEventListener('submit', event => {
     controlle.adiciona();
 });
 const negociacaoView = new NegociacoesView('#negociacoesView');
-// const templete = negociacaoView.templete();
-// console.log(templete)

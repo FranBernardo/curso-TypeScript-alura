@@ -11,5 +11,3 @@ form.addEventListener('submit', event => {
 });
 
 const negociacaoView = new NegociacoesView('#negociacoesView')
-// const templete = negociacaoView.templete();
-// console.log(templete)
