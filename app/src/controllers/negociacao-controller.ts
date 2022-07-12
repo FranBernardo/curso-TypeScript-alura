@@ -1,3 +1,5 @@
+import { inspect } from "../decorators/inspect.js"
+import { logarTempoDeExecucao } from "../decorators/logar-tempo-de-execucao.js"
 import { DiasDaSemana } from "../enums/dias-da-semana.js"
 import { Negociacao } from "../models/negociacao.js"
 import { Negociacoes } from "../models/negociacoes.js"
@@ -13,33 +15,34 @@ export class NegociacaoController {
     private mensagemView = new MensagemView('#mensagemView')
 
     constructor(){
-        this.inputData = document.querySelector('#data')
-        this.inputQuantidade = document.querySelector('#quantidade')
-        this.inputValor = document.querySelector('#valor');
+        this.inputData = <HTMLInputElement>document.querySelector('#data');
+        this.inputQuantidade = document.querySelector('#quantidade') as HTMLInputElement;
+        this.inputValor = document.querySelector('#valor') as HTMLInputElement;
         this.negociacoesView.update(this.negociacoes);
     }
     //tipando a função lembrar de sempre tipar
     //void significa que n retorna nada
-    adiciona(): void{
-        const negociacao = this.criarNegociacao()
+    @logarTempoDeExecucao()
+    @inspect
+   public adiciona(): void{
+        const negociacao =  Negociacao.criaDe(
+            this.inputData.value,
+            this.inputQuantidade.value,
+            this.inputValor.value
+        )
         if(!this.ehDiaSemana(negociacao.data)) {
             this.mensagemView.update('Apenas permetido fazer negociações em dias uteis.')
             return
         } 
-        
+        this.negociacoes.adicionar(negociacao);
+        this.limparFormulario();
+        this.atualizarView();
 
     }
+
 
     private ehDiaSemana(data: Date) {
         return data.getDay() > DiasDaSemana.DOMINGO && data.getDay() < DiasDaSemana.SABADO
-    }
-
-    criarNegociacao(): Negociacao{
-        const exp = /-/g;
-        const date = new Date(this.inputData.value.replace(exp, ','));
-        const quantidade = parseInt(this.inputQuantidade.value);
-        const valor = parseFloat(this.inputValor.value);
-        return new Negociacao(date, quantidade, valor) 
     }
 
     limparFormulario(): void{
